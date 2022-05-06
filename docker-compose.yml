@@ -11,7 +11,7 @@ services:
       - '8080:8080'
     image: ldes-server
     networks:
-      - isolation-network
+      - ldes-environment-network
   ldes-client:
     ports:
       - '8443:8443'
@@ -20,7 +20,7 @@ services:
       - SINGLE_USER_CREDENTIALS_PASSWORD=ctsBtRBKHRAx69EqUghvvgEvjnaLjFEB
     image: ldes-client
     networks:
-      - isolation-network
+      - ldes-environment-network
 networks:
-  isolation-network:
+  ldes-environment-network :
     driver: bridge
