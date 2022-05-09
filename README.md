@@ -10,6 +10,7 @@ Initialize the environment by running `docker-compose up`
 ## Running the template
 
 When the client is up an running, log in via the provided username and password. Then, import the template via the icon in the 'Operate' window.
+
 <img src="images/ImportTemplate.png" alt="Import Template" width="200"/>
 
 Subsequently, load the template via the template icon in the menu bar.
