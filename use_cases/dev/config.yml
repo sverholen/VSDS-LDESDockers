@@ -1,0 +1,5 @@
+## Repositories
+repositories:
+  server: https://github.com/Informatievlaanderen/VSDS-LDESServer4J.git
+  client: https://github.com/Informatievlaanderen/VSDS-LDESClient4J.git
+  nifi: https://github.com/Informatievlaanderen/VSDS-LDESClient-NifiProcessor.git
