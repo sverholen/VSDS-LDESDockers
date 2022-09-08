@@ -56,7 +56,7 @@
           "custom": {
             "axisCenteredZero": false,
             "axisColorMode": "text",
-            "axisLabel": "gfdf",
+            "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
@@ -130,9 +130,11 @@
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
-          "editorMode": "code",
+          "editorMode": "builder",
+          "exemplar": false,
           "expr": "ldes_server_ingested_members_total{instance=~\"$instance\"}",
-          "legendFormat": "__auto",
+          "instant": false,
+          "legendFormat": "",
           "range": true,
           "refId": "A"
         }
@@ -231,6 +233,18 @@
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
+          "expr": "rabbitmq_queue_messages{instance=~\"$instance\"}",
+          "hide": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
         }
       ],
       "title": "Ldes Member in Fragmentation Queue",
@@ -250,7 +264,6 @@
           "custom": {
             "axisCenteredZero": false,
             "axisColorMode": "text",
-            "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
@@ -299,6 +312,7 @@
         "y": 10
       },
       "id": 12,
+      "interval": "15s",
       "options": {
         "legend": {
           "calcs": [
@@ -322,7 +336,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "rate(http_server_requests_seconds_count{uri!~\".*/actuator.*\", instance=~\"$instance\"}[1m])",
+          "expr": "rate(http_server_requests_seconds_count{uri!~\".*/actuator.*\", instance=~\"$instance\"}[$__rate_interval])/rate( http_server_requests_seconds_sum{uri!~\".*/actuator.*\", instance=~\"$instance\", status=\"200\"}[$__rate_interval])",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
@@ -422,7 +436,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "rate( http_server_requests_seconds_sum{uri!~\".*/actuator.*\", instance=~\"$instance\"}[1m]) / rate(http_server_requests_seconds_count{uri!~\".*/actuator.*\", instance=~\"$instance\"}[1m])",
+          "expr": "rate( http_server_requests_seconds_sum{uri!~\".*/actuator.*\", instance=~\"$instance\", status=\"200\"}[$__rate_interval]) / rate(http_server_requests_seconds_count{uri!~\".*/actuator.*\", instance=~\"$instance\", status=\"200\"}[$__rate_interval])",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
@@ -486,11 +500,19 @@
         "current": {
           "selected": true,
           "text": [
-            "All"
+            "host.docker.internal:15692",
+            "host.docker.internal:8080",
+            "otel-collector:8888"
           ],
           "value": [
-            "$__all"
+            "host.docker.internal:15692",
+            "host.docker.internal:8080",
+            "otel-collector:8888"
           ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
         },
         "definition": "label_values(instance)",
         "hide": 0,
@@ -512,8 +534,8 @@
     ]
   },
   "time": {
-    "from": "now-30m",
-    "to": "now"
+    "from": "2022-09-07T08:00:30.467Z",
+    "to": "2022-09-07T08:12:48.669Z"
   },
   "timepicker": {},
   "timezone": "",
