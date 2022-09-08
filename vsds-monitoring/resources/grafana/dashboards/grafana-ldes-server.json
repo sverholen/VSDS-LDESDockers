@@ -233,18 +233,6 @@
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "code",
-          "expr": "rabbitmq_queue_messages{instance=~\"$instance\"}",
-          "hide": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "B"
         }
       ],
       "title": "Ldes Member in Fragmentation Queue",
