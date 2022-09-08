@@ -86,6 +86,7 @@
               "mode": "off"
             }
           },
+          "displayName": "${__field.labels.instance}",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -183,6 +184,7 @@
               "mode": "off"
             }
           },
+          "displayName": "${__field.labels.instance}",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -275,6 +277,7 @@
               "mode": "off"
             }
           },
+          "displayName": "${__field.labels.instance} (${__field.labels.method} ${__field.labels.uri})",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -299,9 +302,9 @@
       "options": {
         "legend": {
           "calcs": [
-            "max",
             "min",
-            "mean"
+            "mean",
+            "max"
           ],
           "displayMode": "table",
           "placement": "bottom",
@@ -374,6 +377,7 @@
               "mode": "off"
             }
           },
+          "displayName": "${__field.labels.instance} (${__field.labels.method} ${__field.labels.uri})",
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -398,9 +402,9 @@
       "options": {
         "legend": {
           "calcs": [
-            "max",
             "min",
-            "mean"
+            "mean",
+            "max"
           ],
           "displayMode": "table",
           "placement": "bottom",
@@ -515,6 +519,6 @@
   "timezone": "",
   "title": "LDES Server",
   "uid": "9ZvyDXiVk",
-  "version": 3,
+  "version": 9,
   "weekStart": ""
 }
