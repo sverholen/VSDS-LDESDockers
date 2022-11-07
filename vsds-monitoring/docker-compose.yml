@@ -1,0 +1,41 @@
+version: '3.3'
+services:
+  jaeger:
+    image: jaegertracing/all-in-one:1.37
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+    ports:
+      - "6831:6831/udp"
+      - "16686:16686"
+      - "4319:4317"
+      - "4320:4318"
+      - "14250:14250"
+    networks:
+      - otel
+  prometheus:
+    image: prom/prometheus:v2.36.2
+    volumes:
+      - ./resources/:/etc/prometheus/
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    ports:
+      - "9090:9090"
+    networks:
+      - otel
+    restart: always
+  grafana:
+    image: grafana/grafana
+    user: "472"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./resources/grafana/:/etc/grafana/
+    networks:
+      - otel
+    restart: always
+
+networks:
+  otel:
+    driver: bridge
